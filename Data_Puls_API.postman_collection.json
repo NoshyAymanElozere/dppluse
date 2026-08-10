@@ -1,0 +1,147 @@
+{
+    "info": {
+        "_postman_id": "84826b5d-3746-4cb8-bcd9-6eb3f92ba486",
+        "name": "Data Puls API",
+        "description": "Postman Collection for Data Puls Website API endpoints (User register & Blog post management)",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Users",
+            "item": [
+                {
+                    "name": "Register User/Admin",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"name\": \"Test User\",\n  \"email\": \"test@datapuls.com\",\n  \"password\": \"password123\",\n  \"role\": \"admin\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{BASE_URL}}/api/users/register",
+                            "host": [
+                                "{{BASE_URL}}"
+                            ],
+                            "path": [
+                                "api",
+                                "users",
+                                "register"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Login User/Admin",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"email\": \"admin@datapuls.com\",\n  \"password\": \"adminpassword123\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{BASE_URL}}/api/users/login",
+                            "host": [
+                                "{{BASE_URL}}"
+                            ],
+                            "path": [
+                                "api",
+                                "users",
+                                "login"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Posts (Blogs)",
+            "item": [
+                {
+                    "name": "Get All Posts",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{BASE_URL}}/api/posts",
+                            "host": [
+                                "{{BASE_URL}}"
+                            ],
+                            "path": [
+                                "api",
+                                "posts"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create Post",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"slug\": \"llm-integration-patterns\",\n  \"category\": \"الذكاء الاصطناعي\",\n  \"title\": \"أنماط دمج نماذج اللغة الكبيرة\",\n  \"subtitle\": \"دليل شامل لفهم كيفية دمج نماذج اللغة الكبيرة (LLMs) في تطبيقاتك للحصول على أفضل أداء وتجربة مستخدم.\",\n  \"coverImage\": \"https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1600&auto=format&fit=crop\",\n  \"author\": {\n    \"name\": \"فريق التحرير\",\n    \"avatarUrl\": \"https://i.pravatar.cc/150?img=11\"\n  },\n  \"readTime\": \"8 دقائق للقراءة\",\n  \"content\": {\n    \"sections\": [\n      {\n        \"type\": \"header\",\n        \"text\": \"مقدمة عن دمج LLM\"\n      },\n      {\n        \"type\": \"paragraph\",\n        \"text\": \"النص التفصيلي للمقال يوضع هنا...\"\n      },\n      {\n        \"type\": \"quote_card\",\n        \"tag\": \"هندسة التوجيه\",\n        \"text\": \"نص الاقتباس يوضع هنا...\"\n      }\n    ]\n  }\n}"
+                        },
+                        "url": {
+                            "raw": "{{BASE_URL}}/api/posts",
+                            "host": [
+                                "{{BASE_URL}}"
+                            ],
+                            "path": [
+                                "api",
+                                "posts"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Post by Slug",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{BASE_URL}}/api/posts/llm-integration-patterns",
+                            "host": [
+                                "{{BASE_URL}}"
+                            ],
+                            "path": [
+                                "api",
+                                "posts",
+                                "llm-integration-patterns"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ],
+    "variable": [
+        {
+            "key": "BASE_URL",
+            "value": "http://localhost:5000",
+            "type": "string"
+        }
+    ]
+}
