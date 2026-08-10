@@ -8,20 +8,27 @@ try {
     console.warn('Could not set custom DNS servers:', e.message);
 }
 
+// Track DB connection state
+let isConnected = false;
+
 export const connectDB = async () => {
+    if (isConnected) {
+        return;
+    }
+
     const mongoURI = process.env.MONGO_URI;
 
     if (!mongoURI) {
         console.error('MONGO_URI is not defined in the environment variables.');
-        process.exit(1);
+        return; // Don't call process.exit(1) on serverless platforms
     }
 
     try {
         await mongoose.connect(mongoURI);
+        isConnected = true;
         console.log('Successfully connected to MongoDB Atlas!');
     } catch (err) {
         console.error('MongoDB connection error:', err.message);
-        process.exit(1);
     }
 };
 
